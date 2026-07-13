@@ -16,12 +16,14 @@ type ScreenAsset = {
   priority?: boolean;
 };
 
+const DEFAULT_SCREEN: ScreenAsset = {
+  src: "/experience-home.png",
+  alt: "VectorDarts home dashboard",
+  priority: true,
+};
+
 const SCREEN_ASSETS: Record<string, ScreenAsset> = {
-  home: {
-    src: "/experience-home.png",
-    alt: "VectorDarts home dashboard",
-    priority: true,
-  },
+  home: DEFAULT_SCREEN,
   cricket: {
     src: "/experience-cricket.png",
     alt: "VectorDarts cricket match",
@@ -69,7 +71,7 @@ function ScreenshotScreen({ asset }: { asset: ScreenAsset }) {
 }
 
 export function AppScreen({ screenId, title, className }: AppScreenProps) {
-  const asset = SCREEN_ASSETS[screenId] ?? SCREEN_ASSETS.home;
+  const asset = SCREEN_ASSETS[screenId] ?? DEFAULT_SCREEN;
 
   return (
     <div className={cn("absolute inset-0 text-white", className)}>
