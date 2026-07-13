@@ -9,8 +9,8 @@ export function StatementScene() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 py-32 sm:px-10 lg:px-16">
-      <div className="relative mx-auto grid w-full max-w-[1600px] items-center gap-12 lg:grid-cols-2 lg:gap-6">
+    <section className="section-shell section-tone-deep section-wash-soft relative min-h-screen overflow-hidden px-6 py-40 sm:px-10 sm:py-44 lg:px-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] items-center gap-12 lg:grid-cols-2 lg:gap-6">
         <div className="relative z-10">
           <SectionTitle size="xl" className="max-w-5xl">
             Darts deserves

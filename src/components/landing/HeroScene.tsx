@@ -32,7 +32,7 @@ export function HeroScene() {
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-screen overflow-hidden"
+      className="section-shell section-tone-deep relative min-h-screen overflow-hidden"
     >
       <HeroVisual className="hidden lg:block" />
 

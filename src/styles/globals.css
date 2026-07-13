@@ -108,7 +108,64 @@
 
   .page-gradient {
     min-height: 100vh;
-    background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+    background-color: #000000;
+  }
+
+  /* Soft section distinction — tone shifts + washes, no hairlines */
+  .section-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .section-tone-deep {
+    background-color: #000000;
+  }
+
+  .section-tone-lift {
+    background-color: #0c0c0c;
+  }
+
+  .section-tone-panel {
+    background-color: #121212;
+  }
+
+  .section-wash-soft::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -5%,
+      rgba(255, 255, 255, 0.045),
+      transparent 62%
+    );
+  }
+
+  .section-wash-mist::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse 90% 55% at 50% 0%,
+      rgba(255, 255, 255, 0.06),
+      transparent 65%
+    );
+  }
+
+  .section-wash-depth::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse 85% 60% at 50% 15%,
+      rgba(255, 255, 255, 0.035),
+      transparent 70%
+    );
   }
 
   .ecosystem-hub-pulse {
@@ -118,13 +175,13 @@
   @keyframes ecosystem-hub-pulse {
     0%,
     100% {
-      opacity: 0.35;
+      opacity: 0.55;
       transform: scale(1);
     }
 
     50% {
-      opacity: 0.7;
-      transform: scale(1.08);
+      opacity: 1;
+      transform: scale(1.1);
     }
   }
 }

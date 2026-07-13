@@ -113,9 +113,9 @@ export function GameCarousel() {
   return (
     <section
       id="modes"
-      className="relative min-h-screen px-6 py-32 sm:px-10 lg:px-16"
+      className="section-shell section-tone-panel section-wash-mist relative min-h-screen px-6 py-36 sm:px-10 sm:py-40 lg:px-16"
     >
-      <div className="mx-auto w-full max-w-[1600px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1600px]">
         <div className="mb-12 max-w-4xl lg:mb-16">
           <motion.h2
             className="font-[family-name:var(--font-display)] text-[clamp(2.25rem,6vw,5rem)] font-extrabold leading-[0.95] tracking-[0.02em]"

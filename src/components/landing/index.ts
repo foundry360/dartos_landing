@@ -1,5 +1,6 @@
 export { Logo } from "./Logo";
 export { DownloadScene } from "./DownloadScene";
+export { ExperienceSection } from "./experience";
 export { FloatingPhone } from "./FloatingPhone";
 export { Footer } from "./Footer";
 export { FullscreenMenu } from "./FullscreenMenu";

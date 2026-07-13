@@ -111,9 +111,9 @@ export function StatsScene() {
   return (
     <section
       id="stats"
-      className="relative min-h-screen px-6 py-32 sm:px-10 lg:px-16"
+      className="section-shell section-tone-lift section-wash-soft relative min-h-screen px-6 py-36 sm:px-10 sm:py-40 lg:px-16"
     >
-      <div className="mx-auto max-w-[1600px]">
+      <div className="relative z-10 mx-auto max-w-[1600px]">
         <motion.p
           className="mb-20 text-sm uppercase tracking-[0.3em] text-white/35"
           initial={prefersReducedMotion ? false : { opacity: 0 }}

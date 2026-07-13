@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   DownloadScene,
+  ExperienceSection,
   Footer,
   GameCarousel,
   HeroScene,
@@ -36,6 +37,7 @@ export function LandingExperience() {
         <ScreenshotScene />
         <StatementScene />
         <GameCarousel />
+        <ExperienceSection />
         <StatsScene />
         <DownloadScene />
       </main>

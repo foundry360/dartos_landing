@@ -9,10 +9,10 @@ export function DownloadScene() {
   return (
     <section
       id="download"
-      className="relative flex min-h-screen items-center justify-center px-6 py-32 sm:px-10"
+      className="section-shell section-tone-panel section-wash-depth relative flex min-h-screen items-center justify-center px-6 py-40 sm:px-10 sm:py-48"
     >
       <motion.div
-        className="relative text-center"
+        className="relative z-10 text-center"
         initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-10%" }}

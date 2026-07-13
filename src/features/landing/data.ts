@@ -1,6 +1,7 @@
 export const NAV_ITEMS = [
   { label: "Platform", href: "#experience" },
   { label: "Experience", href: "#modes" },
+  { label: "App", href: "#showcase" },
   { label: "Stats", href: "#stats" },
   { label: "Download", href: "#download" },
 ] as const;
@@ -134,6 +135,59 @@ export const EXPERIENCE_TIERS = [
     href: SIGN_UP_URL,
   },
 ] as const;
+
+export const EXPERIENCE_SHOWCASE = {
+  id: "showcase",
+  headline: ["Experience", "Every Throw."] as const,
+  supporting: [
+    "VectorOS connects every part of the darts experience into one seamless platform. From practice sessions to competitive matches, every score, statistic, and milestone is captured in one place.",
+    "Designed for players, leagues, and tournaments, VectorOS brings scoring, performance, and competition together, helping you focus on the game, not managing it.",
+  ] as const,
+  screens: [
+    {
+      id: "home",
+      label: "Home",
+      title: "Home Dashboard",
+      accent: "rgba(132,193,38,0.14)",
+    },
+    {
+      id: "cricket",
+      label: "Cricket",
+      title: "Cricket Match",
+      accent: "rgba(220,20,60,0.12)",
+    },
+    {
+      id: "x01",
+      label: "X01",
+      title: "X01 Match",
+      accent: "rgba(132,193,38,0.12)",
+    },
+    {
+      id: "practice",
+      label: "Practice",
+      title: "Practice Session",
+      accent: "rgba(255,255,255,0.06)",
+    },
+    {
+      id: "statistics",
+      label: "Statistics",
+      title: "Player Statistics",
+      accent: "rgba(132,193,38,0.1)",
+    },
+    {
+      id: "tournaments",
+      label: "Tournaments",
+      title: "Tournament Dashboard",
+      accent: "rgba(220,20,60,0.1)",
+    },
+    {
+      id: "profile",
+      label: "Profile",
+      title: "Player Profile",
+      accent: "rgba(255,255,255,0.05)",
+    },
+  ],
+} as const;
 
 export const STATS = [
   { id: "avg", value: 94.2, suffix: "", label: "Average", decimals: 1 },
