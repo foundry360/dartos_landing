@@ -34,7 +34,7 @@ export function HeroScene() {
       id="hero"
       className="relative min-h-screen overflow-hidden"
     >
-      <HeroVisual className="z-0 hidden lg:block" />
+      <HeroVisual className="hidden lg:block" />
 
       <motion.div
         style={prefersReducedMotion ? undefined : { opacity, scale, y }}
@@ -91,7 +91,7 @@ export function HeroScene() {
           </motion.div>
         </div>
 
-        <HeroVisual className="z-0 mt-8 lg:hidden" />
+        <HeroVisual className="mt-8 lg:hidden" />
       </motion.div>
     </section>
   );

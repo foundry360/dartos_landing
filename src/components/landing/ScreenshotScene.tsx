@@ -34,7 +34,8 @@ export function ScreenshotScene() {
                 {INTERFACE_SECTION.heading[0]}
               </span>
               <span className="block whitespace-nowrap leading-none">
-                {INTERFACE_SECTION.heading[1]}
+                {INTERFACE_SECTION.heading[1].slice(0, -1)}
+                <span className="text-[#84C126]">.</span>
               </span>
             </motion.h2>
 

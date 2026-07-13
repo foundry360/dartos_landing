@@ -1,85 +1,169 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { GAME_MODES } from "@/features/landing/data";
+import { ArrowUpRight } from "lucide-react";
+import { EXPERIENCE_SECTION, EXPERIENCE_TIERS } from "@/features/landing/data";
 import { cn } from "@/utils";
+
+type ExperienceCardProps = {
+  tier: (typeof EXPERIENCE_TIERS)[number];
+  index: number;
+};
+
+function ExperienceCard({ tier, index }: ExperienceCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const isElite = tier.id === "elite";
+  const includes = "includes" in tier ? tier.includes : undefined;
+
+  return (
+    <motion.article
+      className={cn(
+        "group relative flex min-h-[min(88vh,920px)] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/8 bg-[#090909] p-8 sm:p-10 lg:p-12",
+        "transition-colors duration-700 hover:border-white/14",
+      )}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 48 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-8%" }}
+      transition={{
+        duration: 0.9,
+        delay: index * 0.12,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={prefersReducedMotion ? undefined : { y: -4 }}
+    >
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100",
+          isElite
+            ? "bg-[radial-gradient(circle_at_80%_0%,rgba(132,193,38,0.08),transparent_55%)]"
+            : "bg-[radial-gradient(circle_at_20%_0%,rgba(255,255,255,0.05),transparent_55%)]",
+        )}
+      />
+
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-white/[0.015] opacity-0 backdrop-blur-[1px] transition-opacity duration-700 group-hover:opacity-100"
+      />
+
+      <div className="relative z-10">
+        {"audience" in tier && tier.audience ? (
+          <p className="text-sm uppercase tracking-[0.28em] text-white/35">
+            {tier.audience}
+          </p>
+        ) : null}
+
+        <h3
+          className={cn(
+            "font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,7rem)] font-extrabold leading-[0.9] tracking-[0.03em]",
+            "audience" in tier && tier.audience ? "mt-8" : "mt-0",
+          )}
+        >
+          {tier.title}
+        </h3>
+
+        <p className="mt-4 flex items-baseline gap-1.5">
+          <span className="font-[family-name:var(--font-display)] text-3xl font-extrabold tracking-[0.02em] text-white sm:text-4xl">
+            {tier.price}
+          </span>
+          <span className="text-base text-white/40 sm:text-lg">
+            {tier.priceInterval}
+          </span>
+        </p>
+
+        <p className="mt-6 max-w-md text-lg leading-relaxed text-white/55 sm:text-xl">
+          {tier.message}
+        </p>
+
+        <div className="mt-8 max-w-md">
+          <p className="text-sm leading-relaxed text-white/40 sm:text-base">
+            {tier.theme}
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-white/30 sm:text-base">
+            {tier.hoverDetail}
+          </p>
+
+          {includes ? (
+            <div className="mt-6">
+              <p className="text-xs uppercase tracking-[0.22em] text-white/35">
+                Includes:
+              </p>
+              <ul className="mt-4 space-y-2.5">
+                {includes.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm leading-relaxed text-white/45"
+                  >
+                    <span className="text-[#84C126]">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      </div>
+
+      <div className="relative z-10 mt-10">
+        <motion.a
+          href={tier.href}
+          className={cn(
+            "inline-flex items-center gap-3 rounded-full border border-[#84C126] bg-transparent px-8 py-4 font-[family-name:var(--font-display)] text-sm font-extrabold uppercase tracking-[0.08em] transition-all duration-500 hover:border-[#84C126] sm:px-10 sm:py-5 sm:text-base",
+          )}
+          whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
+          whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+        >
+          {tier.cta}
+          <ArrowUpRight className="h-5 w-5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </motion.a>
+      </div>
+    </motion.article>
+  );
+}
 
 export function GameCarousel() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="modes" className="relative min-h-screen py-32">
-      <div className="mb-16 px-6 sm:px-10 lg:px-16">
-        <motion.p
-          className="text-sm uppercase tracking-[0.3em] text-white/35"
-          initial={prefersReducedMotion ? false : { opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          Game modes
-        </motion.p>
-        <motion.h2
-          className="mt-4 font-[family-name:var(--font-display)] text-[clamp(2rem,6vw,5rem)] font-extrabold tracking-[0.03em]"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Pick your format.
-        </motion.h2>
-      </div>
+    <section
+      id="modes"
+      className="relative min-h-screen px-6 py-32 sm:px-10 lg:px-16"
+    >
+      <div className="mx-auto w-full max-w-[1600px]">
+        <div className="mb-12 max-w-4xl lg:mb-16">
+          <motion.h2
+            className="font-[family-name:var(--font-display)] text-[clamp(2.25rem,6vw,5rem)] font-extrabold leading-[0.95] tracking-[0.02em]"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {EXPERIENCE_SECTION.title.map((line) => (
+              <span key={line} className="block leading-none">
+                {line.slice(0, -1)}
+                <span className="text-[#84C126]">.</span>
+              </span>
+            ))}
+          </motion.h2>
 
-      <div className="relative">
-        <div className="pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-16 bg-gradient-to-r from-background to-transparent sm:w-24" />
-        <div className="pointer-events-none absolute top-0 right-0 bottom-0 z-10 w-16 bg-gradient-to-l from-background to-transparent sm:w-24" />
+          <motion.p
+            className="mt-5 max-w-2xl text-base leading-relaxed text-white/45 sm:mt-6 sm:text-lg"
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.9,
+              delay: 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {EXPERIENCE_SECTION.subtitle}
+          </motion.p>
+        </div>
 
-        <div className="flex gap-5 overflow-x-auto px-6 pb-8 [-ms-overflow-style:none] [scrollbar-width:none] sm:gap-6 sm:px-10 lg:px-16 [&::-webkit-scrollbar]:hidden">
-          {GAME_MODES.map((mode, index) => (
-            <motion.article
-              key={mode.id}
-              className={cn(
-                "group relative h-[min(70vw,420px)] w-[min(72vw,300px)] shrink-0 overflow-hidden rounded-[2rem] border border-white/8 bg-surface",
-                "transition-colors duration-500 hover:border-white/15",
-              )}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 48 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-5%" }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.08,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
-            >
-              <div
-                className={cn(
-                  "absolute inset-0 bg-gradient-to-b",
-                  mode.gradient,
-                )}
-              />
-
-              <div className="relative flex h-full flex-col justify-between p-8">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm">
-                  <span className="font-[family-name:var(--font-display)] text-lg font-bold">
-                    {mode.id.slice(0, 2).toUpperCase()}
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="font-[family-name:var(--font-display)] text-4xl font-extrabold tracking-[0.03em]">
-                    {mode.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-white/40">{mode.subtitle}</p>
-                </div>
-              </div>
-
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(0,255,102,0.08),transparent_60%)]" />
-              </div>
-            </motion.article>
+        <div className="grid gap-4 lg:grid-cols-2 lg:gap-6">
+          {EXPERIENCE_TIERS.map((tier, index) => (
+            <ExperienceCard key={tier.id} tier={tier} index={index} />
           ))}
         </div>
       </div>

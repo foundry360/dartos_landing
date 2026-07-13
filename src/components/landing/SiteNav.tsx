@@ -32,19 +32,19 @@ export function SiteNav() {
         >
           <span
             className={cn(
-              "h-px w-7 bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "h-px w-7 bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#84C126]",
               menuOpen && "translate-y-[7px] rotate-45",
             )}
           />
           <span
             className={cn(
-              "h-px w-7 bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "h-px w-7 bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#84C126]",
               menuOpen && "opacity-0",
             )}
           />
           <span
             className={cn(
-              "h-px w-7 bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "h-px w-7 bg-white transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-[#84C126]",
               menuOpen && "-translate-y-[7px] -rotate-45",
             )}
           />

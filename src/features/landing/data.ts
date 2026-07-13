@@ -1,6 +1,6 @@
 export const NAV_ITEMS = [
-  { label: "Experience", href: "#experience" },
-  { label: "Modes", href: "#modes" },
+  { label: "Platform", href: "#experience" },
+  { label: "Experience", href: "#modes" },
   { label: "Stats", href: "#stats" },
   { label: "Download", href: "#download" },
 ] as const;
@@ -12,6 +12,9 @@ export const HERO_SUPPORTING_LINE =
 
 export const APP_URL = "https://play.vectordarts.app";
 export const SIGN_UP_URL = "https://play.vectordarts.app/login?mode=sign-up";
+
+export const STATEMENT_SUPPORTING_LINE =
+  "Thoughtfully designed to bring every part of the game together.";
 
 export const INTERFACE_SECTION = {
   eyebrow: "The platform",
@@ -80,42 +83,55 @@ export const VECTOROS_MODULES = [
   },
 ] as const;
 
-export const GAME_MODES = [
+export const EXPERIENCE_SECTION = {
+  title: ["One Platform.", "Two Ways to Play."] as const,
+  subtitle: "Choose the experience that matches how you play.",
+} as const;
+
+export const EXPERIENCE_TIERS = [
   {
-    id: "501",
-    title: "501",
-    subtitle: "Classic",
-    gradient: "from-[#00ff66]/20 to-[#090909]",
+    id: "club",
+    title: "Club",
+    price: "$4.99",
+    priceInterval: "/month",
+    message: "Practice, compete, and track your journey.",
+    theme: "Personal improvement and progression.",
+    hoverDetail:
+      "Your personal VectorDarts home base, built for focused practice, casual competition, and continuous improvement. Track your performance, understand your game, and build better habits with every throw.",
+    includes: [
+      "Personal player profile",
+      "Match scoring and history",
+      "Practice modes and training tools",
+      "Performance tracking",
+      "Game statistics and insights",
+      "Progress milestones and achievements",
+      "Player rankings and records",
+      "Cloud-based account access",
+    ],
+    cta: "Join Club",
+    href: SIGN_UP_URL,
   },
   {
-    id: "cricket",
-    title: "Cricket",
-    subtitle: "Tactical",
-    gradient: "from-[#dc143c]/25 to-[#090909]",
-  },
-  {
-    id: "around",
-    title: "Around",
-    subtitle: "The Clock",
-    gradient: "from-white/10 to-[#090909]",
-  },
-  {
-    id: "killer",
-    title: "Killer",
-    subtitle: "Elimination",
-    gradient: "from-[#dc143c]/20 to-[#090909]",
-  },
-  {
-    id: "practice",
-    title: "Practice",
-    subtitle: "Solo",
-    gradient: "from-[#00ff66]/15 to-[#090909]",
-  },
-  {
-    id: "tournament",
-    title: "Tournament",
-    subtitle: "Bracket",
-    gradient: "from-white/8 to-[#090909]",
+    id: "elite",
+    title: "Elite",
+    price: "$9.99",
+    priceInterval: "/month",
+    message: "Compete, organize, and elevate the game.",
+    theme: "League and tournament competition.",
+    hoverDetail:
+      "Built for competitive players, league operators, and tournament organizers. Elite transforms every event into a connected experience. Manage competition, track performance, and bring players together through a professional darts platform designed for modern play.",
+    includes: [
+      "Everything in Club",
+      "League management tools",
+      "Tournament creation and administration",
+      "Player registration and management",
+      "Match scheduling and brackets",
+      "Team and division management",
+      "Live scoring and match tracking",
+      "Leaderboards and rankings",
+    ],
+    cta: "Go Elite",
+    href: SIGN_UP_URL,
   },
 ] as const;
 

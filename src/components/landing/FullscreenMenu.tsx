@@ -61,7 +61,7 @@ export function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close menu"
-                className="group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 transition-colors hover:border-white/25"
+                className="group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white transition-colors hover:border-[#84C126]/50 hover:text-[#84C126]"
               >
                 <X className="h-5 w-5 transition-transform group-hover:rotate-90" />
               </button>
@@ -84,7 +84,7 @@ export function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
                     onClick={() => onClose()}
                     className={cn(
                       "block font-[family-name:var(--font-display)] text-[clamp(2.5rem,8vw,6rem)] font-extrabold uppercase leading-none tracking-[0.04em]",
-                      "text-white/80 transition-colors hover:text-electric",
+                      "text-white/80 transition-colors hover:text-[#84C126]",
                     )}
                   >
                     {item.label}
