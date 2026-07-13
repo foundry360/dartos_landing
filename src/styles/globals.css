@@ -1,33 +1,109 @@
-:root {
-  --color-background: #ffffff;
-  --color-foreground: #0a0a0a;
-  --font-sans:
-    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+@import "tailwindcss";
+
+@theme {
+  --color-background: #090909;
+  --color-surface: #111111;
+  --color-surface-elevated: #161616;
+  --color-foreground: #ffffff;
+  --color-muted: #6b6b6b;
+  --color-electric: #00ff66;
+  --color-crimson: #dc143c;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #000000;
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: color-mix(
+      in srgb,
+      var(--color-electric) 30%,
+      transparent
+    );
+    color: var(--color-foreground);
+  }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-}
+@layer utilities {
+  .text-display-xl {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 12vw, 11.25rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+  .text-display-hero {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 9.5vw, 8.5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
 
-main {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
+  .text-display-lg {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+  }
+
+  .text-display-md {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .glow-electric {
+    box-shadow:
+      0 0 80px color-mix(in srgb, var(--color-electric) 15%, transparent),
+      0 0 160px color-mix(in srgb, var(--color-electric) 8%, transparent);
+  }
+
+  .glow-crimson {
+    box-shadow:
+      0 0 80px color-mix(in srgb, var(--color-crimson) 12%, transparent),
+      0 0 160px color-mix(in srgb, var(--color-crimson) 6%, transparent);
+  }
+
+  .page-gradient {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+  }
 }

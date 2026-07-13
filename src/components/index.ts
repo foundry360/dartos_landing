@@ -3,4 +3,4 @@
  * Feature-specific components belong in their respective feature folders.
  */
 
-export {};
+export * from "./landing";
