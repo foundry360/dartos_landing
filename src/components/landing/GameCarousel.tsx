@@ -13,7 +13,6 @@ type ExperienceCardProps = {
 function ExperienceCard({ tier, index }: ExperienceCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const isElite = tier.id === "elite";
-  const includes = "includes" in tier ? tier.includes : undefined;
 
   return (
     <motion.article
@@ -47,18 +46,7 @@ function ExperienceCard({ tier, index }: ExperienceCardProps) {
       />
 
       <div className="relative z-10">
-        {"audience" in tier && tier.audience ? (
-          <p className="text-sm uppercase tracking-[0.28em] text-white/35">
-            {tier.audience}
-          </p>
-        ) : null}
-
-        <h3
-          className={cn(
-            "font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,7rem)] font-extrabold leading-[0.9] tracking-[0.03em]",
-            "audience" in tier && tier.audience ? "mt-8" : "mt-0",
-          )}
-        >
+        <h3 className="font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,7rem)] font-extrabold leading-[0.9] tracking-[0.03em]">
           {tier.title}
         </h3>
 
@@ -83,24 +71,22 @@ function ExperienceCard({ tier, index }: ExperienceCardProps) {
             {tier.hoverDetail}
           </p>
 
-          {includes ? (
-            <div className="mt-6">
-              <p className="text-xs uppercase tracking-[0.22em] text-white/35">
-                Includes:
-              </p>
-              <ul className="mt-4 space-y-2.5">
-                {includes.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-white/45"
-                  >
-                    <span className="text-[#84C126]">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
+          <div className="mt-6">
+            <p className="text-xs uppercase tracking-[0.22em] text-white/35">
+              Includes:
+            </p>
+            <ul className="mt-4 space-y-2.5">
+              {tier.includes.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3 text-sm leading-relaxed text-white/45"
+                >
+                  <span className="text-[#84C126]">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 
