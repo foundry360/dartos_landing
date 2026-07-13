@@ -12,7 +12,7 @@ export function StatementScene() {
         <SectionTitle size="xl" className="max-w-5xl">
           Darts deserves
           <br />
-          <span className="text-white/25">better software.</span>
+          <span className="text-[#84C126]">Better Software.</span>
         </SectionTitle>
 
         <motion.p

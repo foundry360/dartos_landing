@@ -31,6 +31,10 @@
     html {
       scroll-behavior: auto;
     }
+
+    .ecosystem-hub-pulse {
+      animation: none;
+    }
   }
 
   body {
@@ -105,5 +109,22 @@
   .page-gradient {
     min-height: 100vh;
     background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+  }
+
+  .ecosystem-hub-pulse {
+    animation: ecosystem-hub-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes ecosystem-hub-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.7;
+      transform: scale(1.08);
+    }
   }
 }

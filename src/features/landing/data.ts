@@ -7,21 +7,76 @@ export const NAV_ITEMS = [
 
 export const HERO_WORDS = ["Play.", "Practice.", "Compete."] as const;
 
-export const SCREENSHOTS = [
+export const HERO_SUPPORTING_LINE =
+  "The modern darts platform built for players who want to improve, compete, and track every throw.";
+
+export const APP_URL = "https://play.vectordarts.app";
+export const SIGN_UP_URL = "https://play.vectordarts.app/login?mode=sign-up";
+
+export const INTERFACE_SECTION = {
+  eyebrow: "The platform",
+  heading: ["Built Around", "Every Throw."] as const,
+  supporting:
+    "From scoring and practice to tournaments, leagues, player profiles, and performance insights, VectorOS connects every part of your darts experience into one seamless platform.",
+  logoAlt: "VectorOS",
+  exploreHint: "Hover a module to explore the ecosystem",
+} as const;
+
+export const VECTOROS_MODULES = [
   {
-    id: "board",
-    label: "Board View",
-    accent: "electric" as const,
+    id: "scoring",
+    label: "Scoring",
+    description:
+      "Real-time leg and match scoring with checkout tracking built in.",
   },
   {
-    id: "match",
-    label: "Live Match",
-    accent: "crimson" as const,
+    id: "practice",
+    label: "Practice",
+    description:
+      "Structured solo sessions to sharpen consistency and finishing.",
   },
   {
-    id: "stats",
-    label: "Player Stats",
-    accent: "electric" as const,
+    id: "match-play",
+    label: "Match Play",
+    description: "Head-to-head formats from casual legs to competitive sets.",
+  },
+  {
+    id: "tournaments",
+    label: "Tournaments",
+    description:
+      "Bracket management and live progression for events of any size.",
+  },
+  {
+    id: "player-profiles",
+    label: "Player Profiles",
+    description: "Identity, history, and preferences tied to every throw.",
+  },
+  {
+    id: "statistics",
+    label: "Statistics",
+    description:
+      "Averages, checkout rates, and trends across your entire game.",
+  },
+  {
+    id: "achievements",
+    label: "Achievements",
+    description:
+      "Milestones and progression that reward improvement over time.",
+  },
+  {
+    id: "leagues",
+    label: "Leagues",
+    description: "Season play, standings, and team competition in one place.",
+  },
+  {
+    id: "cloud-sync",
+    label: "Cloud Sync",
+    description: "Your data follows you across devices, venues, and sessions.",
+  },
+  {
+    id: "performance-insights",
+    label: "Performance Insights",
+    description: "Actionable patterns that reveal where your game improves.",
   },
 ] as const;
 

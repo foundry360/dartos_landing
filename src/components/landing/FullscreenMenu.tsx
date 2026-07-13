@@ -81,7 +81,7 @@ export function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
                 >
                   <Link
                     href={item.href}
-                    onClick={onClose}
+                    onClick={() => onClose()}
                     className={cn(
                       "block font-[family-name:var(--font-display)] text-[clamp(2.5rem,8vw,6rem)] font-extrabold uppercase leading-none tracking-[0.04em]",
                       "text-white/80 transition-colors hover:text-electric",

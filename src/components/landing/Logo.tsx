@@ -5,12 +5,13 @@ import { cn } from "@/utils";
 type LogoProps = {
   className?: string;
   priority?: boolean;
+  href?: string;
 };
 
-export function Logo({ className, priority = false }: LogoProps) {
+export function Logo({ className, priority = false, href = "/" }: LogoProps) {
   return (
     <Link
-      href="#hero"
+      href={href}
       className={cn("inline-flex shrink-0", className)}
       aria-label="VectorDarts home"
     >
