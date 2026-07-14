@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     default: "VectorDarts",
     template: "%s | VectorDarts",
   },
-  description: "VectorDarts — premium darts software. Play. Practice. Compete.",
+  description: "VectorDarts: premium darts software. Play. Practice. Compete.",
   openGraph: {
     title: "VectorDarts",
     description:
-      "VectorDarts — premium darts software. Play. Practice. Compete.",
+      "VectorDarts: premium darts software. Play. Practice. Compete.",
     type: "website",
   },
 };

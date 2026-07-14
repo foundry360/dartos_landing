@@ -3,7 +3,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import {
   BuiltAroundGameSection,
-  DownloadScene,
+  BuiltForGameScene,
+  ClosingCtaScene,
   ExperienceSection,
   Footer,
   GameCarousel,
@@ -40,7 +41,8 @@ export function LandingExperience() {
           <GameCarousel />
           <ExperienceSection />
           <BuiltAroundGameSection />
-          <DownloadScene />
+          <BuiltForGameScene />
+          <ClosingCtaScene />
         </main>
 
         <Footer />

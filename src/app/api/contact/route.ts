@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     from,
     to: [to],
     replyTo: email,
-    subject: `VectorDarts contact — ${name}`,
+    subject: `VectorDarts contact: ${name}`,
     text: [`Name: ${name}`, `Email: ${email}`, "", message].join("\n"),
   });
 

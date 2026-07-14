@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { BackToTop } from "@/components/landing/BackToTop";
 import { FullscreenMenu } from "@/components/landing/FullscreenMenu";
 import { Logo } from "@/components/landing/Logo";
 import { cn } from "@/utils";
@@ -68,6 +69,7 @@ export function SiteNav() {
       </header>
 
       <FullscreenMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      <BackToTop />
     </>
   );
 }

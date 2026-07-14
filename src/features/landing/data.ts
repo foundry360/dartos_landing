@@ -30,6 +30,21 @@ export function getSignUpUrl(plan?: SignUpPlanId) {
 export const STATEMENT_SUPPORTING_LINE =
   "Thoughtfully designed to bring every part of the game together.";
 
+export const BUILT_FOR_GAME = {
+  id: "built-for-game",
+  headline: "Built for the Game.",
+  supporting: "Not just another scoring app.",
+  body: "Every detail of VectorDarts has been thoughtfully designed to make the game faster, simpler, and more enjoyable. From the first throw to the final checkout, the focus stays where it belongs: on the player and the game.",
+} as const;
+
+export const CLOSING_CTA = {
+  id: "join",
+  headline: "Ready for a Better Way to Play?",
+  body: "Join thousands of players embracing a modern darts experience built around practice, competition, and continuous improvement.",
+  primary: { label: "Join Club", plan: "club" as const },
+  secondary: { label: "Explore Elite", plan: "elite" as const },
+} as const;
+
 export const INTERFACE_SECTION = {
   eyebrow: "The platform",
   heading: ["Built Around", "Every Throw."] as const,
@@ -251,7 +266,7 @@ export const BUILT_AROUND_GAME = {
         {
           id: "shanghai",
           name: "Shanghai",
-          blurb: "Single, double, treble — in order.",
+          blurb: "Single, double, treble, in order.",
           image: "/classic-shanghai.png",
         },
         {

@@ -1,6 +1,8 @@
 export { Logo } from "./Logo";
 export { BuiltAroundGameSection } from "./built-around";
-export { DownloadScene } from "./DownloadScene";
+export { BackToTop } from "./BackToTop";
+export { BuiltForGameScene } from "./BuiltForGameScene";
+export { ClosingCtaScene } from "./ClosingCtaScene";
 export { ExperienceSection } from "./experience";
 export { FloatingPhone } from "./FloatingPhone";
 export { Footer } from "./Footer";
