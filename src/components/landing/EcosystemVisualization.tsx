@@ -32,20 +32,21 @@ function pointOnOrbit(angle: number, radius: number) {
   };
 }
 
+/** 0° = right, 90° = bottom, 180° = left, 270° = top — place tooltip outward. */
 function getTooltipPlacement(angle: number): TooltipPlacement {
   const deg = ((angle * 180) / Math.PI + 360) % 360;
-  if (deg >= 315 || deg < 45) return "top";
-  if (deg >= 45 && deg < 135) return "right";
-  if (deg >= 135 && deg < 225) return "bottom";
-  return "left";
+  if (deg >= 315 || deg < 45) return "right";
+  if (deg >= 45 && deg < 135) return "bottom";
+  if (deg >= 135 && deg < 225) return "left";
+  return "top";
 }
 
 function getLabelAlign(angle: number) {
   const deg = ((angle * 180) / Math.PI + 360) % 360;
-  if (deg >= 315 || deg < 45) return "center";
-  if (deg >= 45 && deg < 135) return "left";
-  if (deg >= 135 && deg < 225) return "center";
-  return "right";
+  if (deg >= 315 || deg < 45) return "left";
+  if (deg >= 45 && deg < 135) return "center";
+  if (deg >= 135 && deg < 225) return "right";
+  return "center";
 }
 
 const TOOLTIP_CLASSES: Record<TooltipPlacement, string> = {
@@ -129,7 +130,7 @@ function EcosystemNode({
         </span>
       </motion.button>
 
-      {/* Label outside the ring (further along the same ray) */}
+      {/* Label outside the ring (further along the same ray); tooltip anchors here */}
       <motion.button
         type="button"
         className={cn(
@@ -150,59 +151,60 @@ function EcosystemNode({
         aria-hidden
         {...handlers}
       >
-        <span
-          className={cn(
-            "block whitespace-nowrap text-[10px] leading-none font-medium tracking-[0.06em] uppercase transition-colors duration-500 sm:text-[11px]",
-            align === "left" && "text-left",
-            align === "right" && "text-right",
-            align === "center" && "text-center",
-            isActive ? "text-white" : "text-white/60",
-          )}
-        >
-          {label}
+        <span className="relative block">
+          <span
+            className={cn(
+              "block whitespace-nowrap text-[10px] leading-none font-medium tracking-[0.06em] uppercase transition-colors duration-500 sm:text-[11px]",
+              align === "left" && "text-left",
+              align === "right" && "text-right",
+              align === "center" && "text-center",
+              isActive ? "text-white" : "text-white/60",
+            )}
+          >
+            {label}
+          </span>
+
+          <AnimatePresence>
+            {isActive && (
+              <motion.div
+                id={`${id}-tooltip`}
+                role="tooltip"
+                initial={
+                  prefersReducedMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        scale: 0.96,
+                        y: tooltipPlacement === "top" ? 6 : -6,
+                      }
+                }
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={
+                  prefersReducedMotion
+                    ? undefined
+                    : {
+                        opacity: 0,
+                        scale: 0.96,
+                        y: tooltipPlacement === "top" ? 6 : -6,
+                      }
+                }
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className={cn(
+                  "pointer-events-none absolute z-40 w-44 whitespace-normal rounded-xl border border-white/12 bg-[#0a0a0a]/96 px-3.5 py-3 text-left shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-md sm:w-52",
+                  TOOLTIP_CLASSES[tooltipPlacement],
+                )}
+              >
+                <p className="text-[10px] font-medium tracking-[0.15em] text-[#84C126] uppercase">
+                  {label}
+                </p>
+                <p className="mt-1.5 text-xs leading-relaxed wrap-break-word text-white/70 sm:text-sm">
+                  {description}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </span>
       </motion.button>
-
-      <AnimatePresence>
-        {isActive && (
-          <motion.div
-            id={`${id}-tooltip`}
-            role="tooltip"
-            initial={
-              prefersReducedMotion
-                ? false
-                : {
-                    opacity: 0,
-                    scale: 0.96,
-                    y: tooltipPlacement === "top" ? 6 : -6,
-                  }
-            }
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={
-              prefersReducedMotion
-                ? undefined
-                : {
-                    opacity: 0,
-                    scale: 0.96,
-                    y: tooltipPlacement === "top" ? 6 : -6,
-                  }
-            }
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className={cn(
-              "pointer-events-none absolute z-40 w-44 -translate-x-1/2 -translate-y-1/2 rounded-xl border border-white/12 bg-[#0a0a0a]/96 px-3.5 py-3 text-left shadow-[0_12px_40px_rgba(0,0,0,0.45)] backdrop-blur-md sm:w-52",
-              TOOLTIP_CLASSES[tooltipPlacement],
-            )}
-            style={{ left: `${labelPos.x}%`, top: `${labelPos.y}%` }}
-          >
-            <p className="text-[10px] font-medium tracking-[0.15em] text-[#84C126] uppercase">
-              {label}
-            </p>
-            <p className="mt-1.5 text-xs leading-relaxed text-white/70 sm:text-sm">
-              {description}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
@@ -239,6 +241,12 @@ export function EcosystemVisualization() {
             stroke={BRAND}
             strokeOpacity={0.55}
             strokeWidth="0.4"
+            strokeDasharray="36 2.5"
+            strokeLinecap="round"
+            className={
+              prefersReducedMotion ? undefined : "ecosystem-solid-spin"
+            }
+            style={{ transformOrigin: "center", transformBox: "fill-box" }}
           />
           <circle
             cx={CENTER}
@@ -249,6 +257,10 @@ export function EcosystemVisualization() {
             strokeOpacity={0.22}
             strokeWidth="0.3"
             strokeDasharray="1.2 1.6"
+            className={
+              prefersReducedMotion ? undefined : "ecosystem-dashed-spin"
+            }
+            style={{ transformOrigin: "center", transformBox: "fill-box" }}
           />
         </svg>
 

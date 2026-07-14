@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import {
+  BuiltAroundGameSection,
   DownloadScene,
   ExperienceSection,
   Footer,
@@ -10,19 +11,13 @@ import {
   ScreenshotScene,
   SiteNav,
   StatementScene,
-  StatsScene,
 } from "@/components/landing";
 
 export function LandingExperience() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <motion.div
-      initial={prefersReducedMotion ? false : { opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-      className="page-gradient text-foreground"
-    >
+    <div className="page-gradient text-foreground">
       <a
         href="#hero"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-black"
@@ -30,19 +25,26 @@ export function LandingExperience() {
         Skip to content
       </a>
 
+      {/* Keep fixed nav outside motion wrappers — opacity/transform break position:fixed */}
       <SiteNav />
 
-      <main>
-        <HeroScene />
-        <ScreenshotScene />
-        <StatementScene />
-        <GameCarousel />
-        <ExperienceSection />
-        <StatsScene />
-        <DownloadScene />
-      </main>
+      <motion.div
+        initial={prefersReducedMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <main>
+          <HeroScene />
+          <ScreenshotScene />
+          <StatementScene />
+          <GameCarousel />
+          <ExperienceSection />
+          <BuiltAroundGameSection />
+          <DownloadScene />
+        </main>
 
-      <Footer />
-    </motion.div>
+        <Footer />
+      </motion.div>
+    </div>
   );
 }

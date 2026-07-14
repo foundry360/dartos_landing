@@ -2,7 +2,11 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { EXPERIENCE_SECTION, EXPERIENCE_TIERS } from "@/features/landing/data";
+import {
+  EXPERIENCE_SECTION,
+  EXPERIENCE_TIERS,
+  getSignUpUrl,
+} from "@/features/landing/data";
 import { cn } from "@/utils";
 
 type ExperienceCardProps = {
@@ -92,7 +96,7 @@ function ExperienceCard({ tier, index }: ExperienceCardProps) {
 
       <div className="relative z-10 mt-10">
         <motion.a
-          href={tier.href}
+          href={getSignUpUrl(tier.id)}
           className={cn(
             "inline-flex items-center gap-3 rounded-full border border-[#84C126] bg-transparent px-8 py-4 font-[family-name:var(--font-display)] text-sm font-extrabold uppercase tracking-[0.08em] transition-all duration-500 hover:border-[#84C126] sm:px-10 sm:py-5 sm:text-base",
           )}

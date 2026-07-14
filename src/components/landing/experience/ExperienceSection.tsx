@@ -60,32 +60,32 @@ export function ExperienceSection() {
       className="section-shell section-tone-deep relative"
       style={{ height: `${screens.length * 100}vh` }}
     >
-      <div className="section-wash-soft sticky top-0 flex min-h-screen items-center overflow-hidden px-6 py-24 sm:px-10 lg:px-16">
+      <div className="section-wash-soft sticky top-0 flex min-h-[100dvh] items-center overflow-x-hidden px-4 py-16 sm:px-8 sm:py-20 lg:overflow-hidden lg:px-10 lg:py-20 xl:px-16 xl:py-24">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-5%,rgba(255,255,255,0.05),transparent_60%),radial-gradient(ellipse_90%_60%_at_50%_50%,rgba(255,255,255,0.025),transparent_72%)]"
         />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-[1600px] items-center gap-10 lg:grid-cols-[auto_minmax(0,1fr)_0.38fr] lg:gap-8 xl:gap-12">
+        <div className="relative z-10 mx-auto grid w-full max-w-[1600px] items-center gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-8 xl:grid-cols-[auto_minmax(0,1fr)_minmax(16rem,0.4fr)] xl:gap-10">
           <ScreenNavigator
             labels={screens.map((screen) => screen.label)}
             activeIndex={activeIndex}
             onSelect={scrollToScreen}
-            className="hidden shrink-0 lg:block"
+            className="hidden shrink-0 xl:block"
           />
 
-          <div className="relative order-1 flex flex-col items-center gap-6 lg:order-none">
-            <div className="flex w-full gap-2 overflow-x-auto pb-1 lg:hidden">
+          <div className="relative order-2 flex min-w-0 flex-col items-center gap-4 sm:gap-5 lg:order-1 xl:order-none">
+            <div className="-mx-1 flex w-full max-w-full gap-2 overflow-x-auto px-1 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] xl:hidden [&::-webkit-scrollbar]:hidden">
               {screens.map((screen, index) => (
                 <button
                   key={screen.id}
                   type="button"
                   onClick={() => scrollToScreen(index)}
                   className={cn(
-                    "shrink-0 rounded-full border px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] transition-colors",
+                    "shrink-0 border-b px-1.5 pb-2 text-[10px] font-bold tracking-[0.14em] uppercase transition-colors",
                     index === activeIndex
-                      ? "border-[#84C126]/50 text-[#84C126]"
-                      : "border-white/10 text-white/35",
+                      ? "border-[#84C126] text-[#84C126]"
+                      : "border-transparent text-white/35",
                   )}
                 >
                   {screen.label}
@@ -94,8 +94,8 @@ export function ExperienceSection() {
             </div>
 
             <motion.div
-              className="shrink-0"
-              animate={prefersReducedMotion ? undefined : { y: [0, -10, 0] }}
+              className="w-full min-w-0 max-w-full shrink-0"
+              animate={prefersReducedMotion ? undefined : { y: [0, -8, 0] }}
               transition={
                 prefersReducedMotion
                   ? undefined
@@ -139,24 +139,31 @@ export function ExperienceSection() {
             </motion.div>
           </div>
 
-          <div className="relative order-2 max-w-xl lg:order-none lg:justify-self-end">
+          <div className="relative order-1 min-w-0 lg:order-2 xl:order-none xl:justify-self-end">
             <ExperienceProgress
               index={activeIndex}
               total={screens.length}
-              className="mb-8"
+              className="mb-4 sm:mb-5 lg:mb-6"
             />
 
-            <h2 className="font-[family-name:var(--font-display)] text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-[0.92] tracking-[0.02em]">
-              <span className="block whitespace-nowrap">Experience</span>
-              <span className="block whitespace-nowrap">
+            <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,6.5vw,3.25rem)] font-extrabold leading-[0.92] tracking-[0.02em] xl:text-[clamp(2.75rem,4vw,5rem)]">
+              <span className="block">Experience</span>
+              <span className="block">
                 Every Throw
                 <span className="text-[#84C126]">.</span>
               </span>
             </h2>
 
-            <div className="mt-6 max-w-md space-y-4 text-base leading-relaxed text-white/45 sm:max-w-lg sm:text-lg">
-              {EXPERIENCE_SHOWCASE.supporting.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+            <div className="mt-4 max-w-md space-y-3 text-sm leading-relaxed text-white/45 sm:mt-5 sm:text-base lg:max-w-sm lg:text-[0.95rem] xl:mt-6 xl:max-w-md xl:space-y-4 xl:text-lg">
+              {EXPERIENCE_SHOWCASE.supporting.map((paragraph, index) => (
+                <p
+                  key={paragraph.slice(0, 32)}
+                  className={cn(
+                    index > 0 && "hidden sm:block lg:hidden xl:block",
+                  )}
+                >
+                  {paragraph}
+                </p>
               ))}
             </div>
           </div>

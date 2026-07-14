@@ -35,6 +35,14 @@
     .ecosystem-hub-pulse {
       animation: none;
     }
+
+    .ecosystem-dashed-spin {
+      animation: none;
+    }
+
+    .ecosystem-solid-spin {
+      animation: none;
+    }
   }
 
   body {
@@ -182,6 +190,26 @@
     50% {
       opacity: 1;
       transform: scale(1.1);
+    }
+  }
+
+  .ecosystem-dashed-spin {
+    animation: ecosystem-dashed-spin 48s linear infinite;
+  }
+
+  @keyframes ecosystem-dashed-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .ecosystem-solid-spin {
+    animation: ecosystem-solid-spin 64s linear infinite;
+  }
+
+  @keyframes ecosystem-solid-spin {
+    to {
+      transform: rotate(-360deg);
     }
   }
 }

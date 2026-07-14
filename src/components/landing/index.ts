@@ -1,4 +1,5 @@
 export { Logo } from "./Logo";
+export { BuiltAroundGameSection } from "./built-around";
 export { DownloadScene } from "./DownloadScene";
 export { ExperienceSection } from "./experience";
 export { FloatingPhone } from "./FloatingPhone";
@@ -11,4 +12,3 @@ export { ScreenshotScene } from "./ScreenshotScene";
 export { SectionTitle } from "./SectionTitle";
 export { SiteNav } from "./SiteNav";
 export { StatementScene } from "./StatementScene";
-export { StatsScene } from "./StatsScene";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FullscreenMenu } from "@/components/landing/FullscreenMenu";
 import { Logo } from "@/components/landing/Logo";
@@ -8,10 +8,26 @@ import { cn } from "@/utils";
 
 export function SiteNav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY || document.documentElement.scrollTop;
+      setScrolled(y > 16);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-8 sm:px-10 lg:px-16">
+      <header
+        className={cn(
+          "fixed top-0 right-0 left-0 z-[60] flex items-center justify-between px-6 py-8 transition-[background-color,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10 lg:px-16",
+          scrolled || menuOpen ? "bg-[#000000] py-5 sm:py-6" : "bg-transparent",
+        )}
+      >
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}

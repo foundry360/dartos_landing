@@ -1,10 +1,13 @@
 export const NAV_ITEMS = [
-  { label: "Platform", href: "#experience" },
-  { label: "Experience", href: "#modes" },
-  { label: "App", href: "#showcase" },
-  { label: "Stats", href: "#stats" },
-  { label: "Download", href: "#download" },
+  { label: "Home", href: "/" },
+  { label: "VectorOS", href: "/#experience" },
+  { label: "Plans", href: "/#modes" },
+  { label: "Experiences", href: "/#showcase" },
+  { label: "Your Game", href: "/#your-game" },
+  { label: "Get In Touch", href: "/contact" },
 ] as const;
+
+export const CONTACT_EMAIL = "hello@vectordarts.app";
 
 export const HERO_WORDS = ["Play.", "Practice.", "Compete."] as const;
 
@@ -13,6 +16,16 @@ export const HERO_SUPPORTING_LINE =
 
 export const APP_URL = "https://play.vectordarts.app";
 export const SIGN_UP_URL = "https://play.vectordarts.app/login?mode=sign-up";
+
+export type SignUpPlanId = "club" | "elite";
+
+/** Create-account URL; pass plan so signup continues to /subscribe with it selected. */
+export function getSignUpUrl(plan?: SignUpPlanId) {
+  if (!plan) return SIGN_UP_URL;
+  const url = new URL(SIGN_UP_URL);
+  url.searchParams.set("plan", plan);
+  return url.toString();
+}
 
 export const STATEMENT_SUPPORTING_LINE =
   "Thoughtfully designed to bring every part of the game together.";
@@ -101,6 +114,7 @@ export const EXPERIENCE_TIERS = [
       "Your personal VectorDarts home base, built for focused practice, casual competition, and continuous improvement. Track your performance, understand your game, and build better habits with every throw.",
     includes: [
       "Personal player profile",
+      "Custom board themes",
       "Match scoring and history",
       "Practice modes and training tools",
       "Performance tracking",
@@ -110,7 +124,6 @@ export const EXPERIENCE_TIERS = [
       "Cloud-based account access",
     ],
     cta: "Join Club",
-    href: SIGN_UP_URL,
   },
   {
     id: "elite",
@@ -132,7 +145,6 @@ export const EXPERIENCE_TIERS = [
       "Leaderboards and rankings",
     ],
     cta: "Go Elite",
-    href: SIGN_UP_URL,
   },
 ] as const;
 
@@ -189,25 +201,83 @@ export const EXPERIENCE_SHOWCASE = {
   ],
 } as const;
 
-export const STATS = [
-  { id: "avg", value: 94.2, suffix: "", label: "Average", decimals: 1 },
-  {
-    id: "checkout",
-    value: 68,
-    suffix: "%",
-    label: "Checkout Rate",
-    decimals: 0,
-  },
-  {
-    id: "matches",
-    value: 1247,
-    suffix: "",
-    label: "Matches Played",
-    decimals: 0,
-  },
-  { id: "streak", value: 12, suffix: "", label: "Win Streak", decimals: 0 },
-] as const;
-
-export const CHART_DATA = [
-  42, 68, 55, 82, 74, 91, 63, 88, 76, 95, 71, 89,
-] as const;
+export const BUILT_AROUND_GAME = {
+  id: "your-game",
+  title: ["Built Around", "Your Game."] as const,
+  supporting:
+    "Whether you're practicing alone, playing with friends, or preparing for competition, VectorOS adapts to the way you play. Every mode, match, and session is designed to help you stay focused, improve consistently, and enjoy the game.",
+  experiences: [
+    {
+      id: "training",
+      number: "01",
+      title: "Training",
+      theme: "Sharpen your skills.",
+      description:
+        "Build consistency through focused practice. Track your sessions, refine your game, and improve with every throw.",
+      highlights: [
+        "Practice interface",
+        "Training sessions",
+        "Performance improvement",
+      ],
+      image: "/experience-practice-stats.png",
+      imageAlt: "VectorOS practice statistics for Around the Clock",
+    },
+    {
+      id: "match-play",
+      number: "02",
+      title: "Match Play",
+      theme: "Every match matters.",
+      description:
+        "From casual games to competitive matches, VectorOS keeps scoring simple while capturing every moment of the game.",
+      highlights: ["Live scoring interface", "Game flow", "Player experience"],
+      image: "/experience-match-play.png",
+      imageAlt: "VectorOS match play history and active matches",
+    },
+    {
+      id: "classic-games",
+      number: "03",
+      title: "Classics",
+      theme: "The games you know. Reimagined.",
+      description:
+        "Enjoy the games that define darts with a modern experience designed for today's players.",
+      highlights: ["Bob's 27", "Shanghai", "Halve It", "121 Checkout"],
+      games: [
+        {
+          id: "bobs-27",
+          name: "Bob's 27",
+          blurb: "Climb the board. Survive the doubles.",
+          image: "/classic-bobs-27.png",
+        },
+        {
+          id: "shanghai",
+          name: "Shanghai",
+          blurb: "Single, double, treble — in order.",
+          image: "/classic-shanghai.png",
+        },
+        {
+          id: "halve-it",
+          name: "Halve It",
+          blurb: "Hit the target or lose half.",
+          image: "/classic-halve-it.png",
+        },
+        {
+          id: "121-checkout",
+          name: "121 Checkout",
+          blurb: "Finish from 121 in three darts.",
+          image: "/classic-121-checkout.png",
+        },
+      ],
+    },
+    {
+      id: "statistics",
+      number: "04",
+      title: "Statistics",
+      theme: "Understand your game.",
+      description:
+        "Turn every match into insight. Review your performance, track progress, and better understand your strengths.",
+      highlights: ["Player statistics", "Charts", "Performance trends"],
+      image: "/experience-statistics.png",
+      imageAlt: "VectorOS match statistics",
+    },
+  ],
+} as const;
