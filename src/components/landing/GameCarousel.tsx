@@ -16,12 +16,12 @@ type ExperienceCardProps = {
 
 function ExperienceCard({ tier, index }: ExperienceCardProps) {
   const prefersReducedMotion = useReducedMotion();
-  const isElite = tier.id === "elite";
+  const isFeatured = tier.id === "league_pro" || tier.id === "elite";
 
   return (
     <motion.article
       className={cn(
-        "group relative flex min-h-[min(88vh,920px)] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/8 bg-[#090909] p-8 sm:p-10 lg:p-12",
+        "group relative flex min-h-[min(88vh,920px)] flex-col justify-between overflow-hidden rounded-[2rem] border border-white/8 bg-[#090909] p-8 sm:p-10 lg:p-10 xl:p-12",
         "transition-colors duration-700 hover:border-white/14",
       )}
       initial={prefersReducedMotion ? false : { opacity: 0, y: 48 }}
@@ -38,7 +38,7 @@ function ExperienceCard({ tier, index }: ExperienceCardProps) {
         aria-hidden
         className={cn(
           "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100",
-          isElite
+          isFeatured
             ? "bg-[radial-gradient(circle_at_80%_0%,rgba(132,193,38,0.08),transparent_55%)]"
             : "bg-[radial-gradient(circle_at_20%_0%,rgba(255,255,255,0.05),transparent_55%)]",
         )}
@@ -50,7 +50,7 @@ function ExperienceCard({ tier, index }: ExperienceCardProps) {
       />
 
       <div className="relative z-10">
-        <h3 className="font-[family-name:var(--font-display)] text-[clamp(3.5rem,10vw,7rem)] font-extrabold leading-[0.9] tracking-[0.03em]">
+        <h3 className="font-[family-name:var(--font-display)] text-[clamp(2.25rem,4.2vw,3.75rem)] font-extrabold leading-[0.9] tracking-[0.03em] whitespace-nowrap xl:text-[clamp(2.5rem,3.8vw,4.25rem)]">
           {tier.title}
         </h3>
 
@@ -151,7 +151,7 @@ export function GameCarousel() {
           </motion.p>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-2 lg:gap-6">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {EXPERIENCE_TIERS.map((tier, index) => (
             <ExperienceCard key={tier.id} tier={tier} index={index} />
           ))}

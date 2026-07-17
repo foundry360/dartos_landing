@@ -17,7 +17,7 @@ export const HERO_SUPPORTING_LINE =
 export const APP_URL = "https://play.vectordarts.app";
 export const SIGN_UP_URL = "https://play.vectordarts.app/login?mode=sign-up";
 
-export type SignUpPlanId = "club" | "elite";
+export type SignUpPlanId = "club" | "elite" | "league_pro";
 
 /** Create-account URL; pass plan so signup continues to /subscribe with it selected. */
 export function getSignUpUrl(plan?: SignUpPlanId) {
@@ -113,7 +113,7 @@ export const VECTOROS_MODULES = [
 ] as const;
 
 export const EXPERIENCE_SECTION = {
-  title: ["One Platform.", "Two Ways to Play."] as const,
+  title: ["One Platform.", "Three Ways to Play."] as const,
   subtitle: "Choose the experience that matches how you play.",
 } as const;
 
@@ -124,10 +124,13 @@ export const EXPERIENCE_TIERS = [
     price: "$4.99",
     priceInterval: "/month",
     message: "Practice, compete, and track your journey.",
-    theme: "Personal improvement and progression.",
+    theme: "Bot, head-to-head, and local league registration.",
     hoverDetail:
-      "Your personal VectorDarts home base, built for focused practice, casual competition, and continuous improvement. Track your performance, understand your game, and build better habits with every throw.",
+      "Your personal VectorDarts home base for focused practice, head-to-head play, and local league registration. Track your performance, understand your game, and build better habits with every throw.",
     includes: [
+      "Bot play",
+      "Head-to-head matches",
+      "Local league registration",
       "Personal player profile",
       "Custom board themes",
       "Match scoring and history",
@@ -135,8 +138,6 @@ export const EXPERIENCE_TIERS = [
       "Performance tracking",
       "Game statistics and insights",
       "Progress milestones and achievements",
-      "Player rankings and records",
-      "Cloud-based account access",
     ],
     cta: "Join Club",
   },
@@ -145,12 +146,36 @@ export const EXPERIENCE_TIERS = [
     title: "Elite",
     price: "$9.99",
     priceInterval: "/month",
+    message: "Online competition. Elevated.",
+    theme: "Everything in Club, plus online access.",
+    hoverDetail:
+      "Built for players who want to compete beyond local matches. Elite includes everything in Club and unlocks online access for official league participation, season standings, and enhanced player insights to help you improve your game and stay connected with your league.",
+    includes: [
+      "Everything in Club",
+      "Online access",
+      "Official league registration",
+      "League match participation",
+      "Season schedules and fixtures",
+      "Live scoring and match tracking",
+      "League standings",
+      "Advanced player statistics",
+      "Match history and performance trends",
+      "Player rankings and leaderboards",
+    ],
+    cta: "Go Elite",
+  },
+  {
+    id: "league_pro",
+    title: "League Pro",
+    price: "$25.00",
+    priceInterval: "/month",
     message: "Compete, organize, and elevate the game.",
     theme: "League and tournament competition.",
     hoverDetail:
-      "Built for competitive players, league operators, and tournament organizers. Elite transforms every event into a connected experience. Manage competition, track performance, and bring players together through a professional darts platform designed for modern play.",
+      "Built for competitive players, league operators, and tournament organizers. League Pro transforms every event into a connected experience. Manage competition, track performance, and bring players together through a professional darts platform designed for modern play.",
     includes: [
-      "Everything in Club",
+      "One league venue",
+      "Up to 80 players",
       "League management tools",
       "Tournament creation and administration",
       "Player registration and management",
@@ -159,7 +184,7 @@ export const EXPERIENCE_TIERS = [
       "Live scoring and match tracking",
       "Leaderboards and rankings",
     ],
-    cta: "Go Elite",
+    cta: "Go League Pro",
   },
 ] as const;
 
