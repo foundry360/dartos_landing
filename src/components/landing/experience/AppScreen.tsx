@@ -28,10 +28,12 @@ const SCREEN_ASSETS: Record<string, ScreenAsset> = {
   cricket: {
     src: "/experience-cricket.png",
     alt: "VectorDarts cricket match",
+    fit: "contain",
   },
   x01: {
     src: "/experience-x01.png",
     alt: "VectorDarts X01 match",
+    fit: "contain",
   },
   practice: {
     src: "/experience-practice.png",
