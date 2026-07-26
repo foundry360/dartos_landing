@@ -1,5 +1,5 @@
-import { LandingExperience } from "@/features/landing";
+import { ResponsiveLanding } from "@/features/landing";
 
 export default function HomePage() {
-  return <LandingExperience />;
+  return <ResponsiveLanding />;
 }

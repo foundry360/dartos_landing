@@ -25,8 +25,10 @@ export function SiteNav() {
     <>
       <header
         className={cn(
-          "fixed top-0 right-0 left-0 z-[60] flex items-center justify-between px-6 py-8 transition-[background-color,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10 lg:px-16",
-          scrolled || menuOpen ? "bg-[#000000] py-5 sm:py-6" : "bg-transparent",
+          "fixed top-0 right-0 left-0 z-[60] flex items-center justify-between px-6 transition-[background-color,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-10 lg:px-16",
+          scrolled || menuOpen
+            ? "bg-[#000000] pt-[calc(1.25rem+env(safe-area-inset-top))] pb-5 sm:pt-[calc(1.5rem+env(safe-area-inset-top))] sm:pb-6"
+            : "bg-transparent pt-[calc(2rem+env(safe-area-inset-top))] pb-8",
         )}
       >
         <motion.div

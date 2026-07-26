@@ -17,8 +17,9 @@ type ScreenAsset = {
 };
 
 const DEFAULT_SCREEN: ScreenAsset = {
-  src: "/experience-home.png",
+  src: "/experience-home-ipad.png",
   alt: "VectorDarts home dashboard",
+  fit: "contain",
   priority: true,
 };
 
