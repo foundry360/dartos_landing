@@ -175,8 +175,8 @@ export const EXPERIENCE_TIERS = [
     hoverDetail:
       "Built for competitive players, league operators, and tournament organizers. League Pro transforms every event into a connected experience. Manage competition, track performance, and bring players together through a professional darts platform designed for modern play.",
     includes: [
-      "One league venue",
-      "Up to 80 players",
+      "Unlimited venues",
+      "Unlimited players",
       "League management tools",
       "Tournament creation and administration",
       "Player registration and management",
