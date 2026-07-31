@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics";
+import { env } from "@/config";
 import { AppProviders } from "@/providers";
 import "@/styles/globals.css";
 
@@ -45,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
       <body className="font-[family-name:var(--font-body)] antialiased">
+        <GoogleAnalytics measurementId={env.analyticsId} />
         <AppProviders>{children}</AppProviders>
       </body>
     </html>
