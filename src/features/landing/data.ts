@@ -115,6 +115,7 @@ export const VECTOROS_MODULES = [
 export const EXPERIENCE_SECTION = {
   title: ["One Platform.", "Three Ways to Play."] as const,
   subtitle: "Choose the experience that matches how you play.",
+  trialNote: "Includes a 7-day free trial",
 } as const;
 
 export const EXPERIENCE_TIERS = [

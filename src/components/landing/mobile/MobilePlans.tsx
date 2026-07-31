@@ -73,6 +73,10 @@ export function MobilePlans() {
                   </span>
                 </p>
 
+                <p className="mt-1.5 text-sm tracking-[0.04em] text-[#84C126]/80">
+                  {EXPERIENCE_SECTION.trialNote}
+                </p>
+
                 <p className="mt-4 text-base leading-relaxed text-white/55">
                   {tier.message}
                 </p>

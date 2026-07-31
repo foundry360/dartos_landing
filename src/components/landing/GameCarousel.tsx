@@ -63,6 +63,10 @@ function ExperienceCard({ tier, index }: ExperienceCardProps) {
           </span>
         </p>
 
+        <p className="mt-2 text-sm tracking-[0.04em] text-[#84C126]/80 sm:text-base">
+          {EXPERIENCE_SECTION.trialNote}
+        </p>
+
         <p className="mt-6 max-w-md text-lg leading-relaxed text-white/55 sm:text-xl">
           {tier.message}
         </p>
