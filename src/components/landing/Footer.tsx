@@ -19,21 +19,29 @@ export function Footer({ showLogo = true }: FooterProps) {
           ) : null}
           <p
             className={
-              showLogo ? "mt-4 text-sm text-white/75" : "text-sm text-white/75"
+              showLogo
+                ? "mt-4 text-sm text-[#000000]"
+                : "text-sm text-[#000000]"
             }
           >
             © {new Date().getFullYear()} Vector Darts
           </p>
         </div>
 
-        <div className="flex gap-8 text-sm text-white/80">
-          <Link href="/privacy" className="transition-colors hover:text-white">
+        <div className="flex gap-8 text-sm text-[#000000]">
+          <Link
+            href="/privacy"
+            className="transition-colors hover:text-black/70"
+          >
             Privacy
           </Link>
-          <Link href="/terms" className="transition-colors hover:text-white">
+          <Link href="/terms" className="transition-colors hover:text-black/70">
             Terms
           </Link>
-          <Link href="/contact" className="transition-colors hover:text-white">
+          <Link
+            href="/contact"
+            className="transition-colors hover:text-black/70"
+          >
             Contact
           </Link>
         </div>
