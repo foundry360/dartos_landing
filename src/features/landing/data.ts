@@ -4,6 +4,11 @@ export const NAV_ITEMS = [
   { label: "Plans", href: "/#modes" },
   { label: "Experiences", href: "/#showcase" },
   { label: "Your Game", href: "/#your-game" },
+  {
+    label: "Community",
+    href: "https://discord.com/channels/1533215256631836773/1533215259417120812",
+    external: true,
+  },
   { label: "Get In Touch", href: "/contact" },
 ] as const;
 

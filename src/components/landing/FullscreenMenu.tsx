@@ -80,6 +80,11 @@ export function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
                     item.label
                   );
 
+                const className = cn(
+                  "block font-[family-name:var(--font-display)] text-[clamp(2.25rem,7.5vw,5.5rem)] font-extrabold leading-none tracking-[0.04em] uppercase",
+                  "text-white/80 transition-colors hover:text-[#84C126]",
+                );
+
                 return (
                   <motion.div
                     key={item.href}
@@ -93,16 +98,25 @@ export function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
                       ease: [0.22, 1, 0.36, 1],
                     }}
                   >
-                    <Link
-                      href={item.href}
-                      onClick={() => onClose()}
-                      className={cn(
-                        "block font-[family-name:var(--font-display)] text-[clamp(2.25rem,7.5vw,5.5rem)] font-extrabold leading-none tracking-[0.04em] uppercase",
-                        "text-white/80 transition-colors hover:text-[#84C126]",
-                      )}
-                    >
-                      {label}
-                    </Link>
+                    {"external" in item && item.external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => onClose()}
+                        className={className}
+                      >
+                        {label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => onClose()}
+                        className={className}
+                      >
+                        {label}
+                      </Link>
+                    )}
                   </motion.div>
                 );
               })}
