@@ -14,3 +14,4 @@ export { ScreenshotScene } from "./ScreenshotScene";
 export { SectionTitle } from "./SectionTitle";
 export { SiteNav } from "./SiteNav";
 export { StatementScene } from "./StatementScene";
+export { TrialSignupModal } from "./TrialSignupModal";

@@ -118,6 +118,26 @@ export const EXPERIENCE_SECTION = {
   trialNote: "Includes a 7-day free trial",
 } as const;
 
+export const TRIAL_MODAL = {
+  eyebrow: "Limited intro offer",
+  headline: ["Play Free", "for 7 Days"],
+  body: "Full access to practice, match play, and performance tracking. No charge today.",
+  benefits: [
+    "Score, practice, and compete from day one",
+    "Track every throw with real insights",
+    "Cancel anytime — keep your progress",
+  ],
+  cta: "Claim My Free Trial",
+  footnote: "Takes less than a minute to create your account.",
+  dismiss: "Continue browsing",
+  openDelayMs: 3000,
+  image: {
+    src: "/trial-modal-banner.png",
+    alt: "Professional darts player aiming with focused intensity",
+    badge: "7 DAYS FREE",
+  },
+} as const;
+
 export const EXPERIENCE_TIERS = [
   {
     id: "club",
