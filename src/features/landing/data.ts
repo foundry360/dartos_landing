@@ -1,3 +1,21 @@
+export const DISCORD_URL =
+  "https://discord.com/channels/1533215256631836773/1533215259417120812";
+
+export const SOCIAL_LINKS = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61592933304088",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/vectordarts/",
+  },
+  {
+    label: "Discord",
+    href: DISCORD_URL,
+  },
+] as const;
+
 export const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "VectorOS", href: "/#experience" },
@@ -6,7 +24,7 @@ export const NAV_ITEMS = [
   { label: "Your Game", href: "/#your-game" },
   {
     label: "Community",
-    href: "https://discord.com/channels/1533215256631836773/1533215259417120812",
+    href: DISCORD_URL,
     external: true,
   },
   { label: "Get In Touch", href: "/contact" },
